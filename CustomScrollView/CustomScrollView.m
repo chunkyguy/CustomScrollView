@@ -7,77 +7,144 @@
 //
 
 #import "CustomScrollView.h"
-
-CGFloat clamp(CGFloat value, CGFloat min, CGFloat max)
-{
-  return fmax(min, fmin(value, max));
-}
+#import "WLMath.h"
 
 @interface CustomScrollView () {
-  CGRect _startBounds;
+  CGRect _originalBounds;
+  CGRect _panStartBounds;
   UITextView *_consoleView;
+  CGFloat _zoomScale;
+  CGSize _contentSize;
 }
 @end
 
 @implementation CustomScrollView
 
-- (id)initWithFrame:(CGRect)frame consoleView:(UITextView *)consoleView
+- (id)initWithFrame:(CGRect)frame
+        contentSize:(CGSize)contentSize
+        consoleView:(UITextView *)consoleView
 {
   self = [super initWithFrame:frame];
   if (self == nil) {
     return nil;
   }
 
-  _startBounds = CGRectZero;
+  _panStartBounds = CGRectZero;
+  _zoomScale = 1.0;
+  _contentSize = contentSize;
   _consoleView = consoleView;
+  _originalBounds = self.bounds;
 
-  UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-  [self addGestureRecognizer:panGestureRecognizer];
   [self setBackgroundColor:[UIColor whiteColor]];
   [self setClipsToBounds:YES];
 
-  [self printInfo];
+  UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(handlePanGesture:)];
+  [self addGestureRecognizer:panGesture];
 
+  UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+  [self addGestureRecognizer:pinchGesture];
+
+  [self printInitalInfo];
   return self;
 }
 
-- (void)handlePanGesture:(UIPanGestureRecognizer *)panGestureRecognizer
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer
 {
-  switch (panGestureRecognizer.state) {
+  switch (gestureRecognizer.state) {
   case UIGestureRecognizerStateBegan:
-    _startBounds = self.bounds;
+    [self printInfoForEventNamed:@"pinch begin"];
     break;
 
   case UIGestureRecognizerStateChanged:
-    [self updateBoundsWithTranslation:[panGestureRecognizer translationInView:self]];
+    _zoomScale = gestureRecognizer.scale;
+    self.bounds = wl_scrollZoom(_originalBounds, _contentSize, gestureRecognizer.scale);
+    [self printInfoForEventNamed:@"pinch change"];
     break;
 
   case UIGestureRecognizerStateEnded:
-    [self printInfo];
+    [self printInfoForEventNamed:@"pinch end"];
+    break;
+
+  case UIGestureRecognizerStateCancelled:
+    [self printInfoForEventNamed:@"pinch cancel"];
     break;
 
   default:
+    NSAssert(false, @"Unsupported state", gestureRecognizer);
     break;
   }
 }
 
-- (void)updateBoundsWithTranslation:(CGPoint)translation
+- (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer
 {
-  CGRect bounds = _startBounds;
-  CGPoint delta = CGPointMake(bounds.origin.x - translation.x,
-    bounds.origin.y - translation.y);
-  CGPoint min = CGPointZero;
-  CGPoint max = CGPointMake(_contentSize.width - bounds.size.width,
-    _contentSize.height - bounds.size.height);
-  bounds.origin.x = clamp(delta.x, min.x, max.x);
-  bounds.origin.y = clamp(delta.y, min.y, max.y);
-  self.bounds = bounds;
+  switch (gestureRecognizer.state) {
+  case UIGestureRecognizerStateBegan:
+    _panStartBounds = self.bounds;
+    [self printInfoForEventNamed:@"pan begin"];
+    break;
+
+  case UIGestureRecognizerStateChanged:
+    self.bounds = wl_scrollTranslate(_panStartBounds, _contentSize, [gestureRecognizer translationInView:self]);
+    [self printInfoForEventNamed:@"pan change"];
+    break;
+
+  case UIGestureRecognizerStateEnded:
+    [self printInfoForEventNamed:@"pan end"];
+    break;
+
+  default:
+    NSAssert(false, @"Unsupported state", gestureRecognizer);
+    break;
+  }
 }
 
-- (void)printInfo
+- (void)printInitalInfo
 {
-  NSString *text = [NSString stringWithFormat:@"bounds: %@", NSStringFromCGRect(self.bounds)];
-  _consoleView.text = [NSString stringWithFormat:@"%@\n%@", text, _consoleView.text];
+  NSMutableArray *arr = [NSMutableArray array];
+
+  [arr addObject:@"event"];
+  [arr addObject:@"init"];
+
+  [arr addObject:@"content-size"];
+  [arr addObject:NSStringFromCGSize(_contentSize)];
+
+  [arr addObject:@"bounds"];
+  [arr addObject:NSStringFromCGRect(self.bounds)];
+
+  [arr addObject:@"zoom-scale"];
+  [arr addObject:[NSNumber numberWithDouble:_zoomScale]];
+
+  [arr addObject:@"original-bounds"];
+  [arr addObject:NSStringFromCGRect(_originalBounds)];
+
+  [self printData:arr];
+}
+
+- (void)printInfoForEventNamed:(NSString *)eventName
+{
+  NSMutableArray *arr = [NSMutableArray array];
+
+  [arr addObject:@"event"];
+  [arr addObject:eventName];
+
+  [arr addObject:@"bounds"];
+  [arr addObject:NSStringFromCGRect(self.bounds)];
+
+  [arr addObject:@"zoom-scale"];
+  [arr addObject:[NSNumber numberWithDouble:_zoomScale]];
+
+  [self printData:arr];
+}
+
+- (void)printData:(NSArray *)arr
+{
+  NSMutableString *text = [NSMutableString string];
+  for (NSInteger idx = 0; idx < [arr count]; idx += 2) {
+    [text appendFormat:@"%@:%@\n", [arr objectAtIndex:idx], [arr objectAtIndex:idx + 1]];
+  }
+  [text appendString:_consoleView.text];
+  _consoleView.text = text;
 }
 
 @end
