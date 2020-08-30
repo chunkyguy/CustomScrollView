@@ -10,8 +10,8 @@
 
 @interface CustomScrollView : UIView
 
+- (id)initWithFrame:(CGRect)frame consoleView:(UITextView *)consoleView;
+
 @property (nonatomic) CGSize contentSize;
-@property (nonatomic) BOOL scrollVertical;
-@property (nonatomic) BOOL scrollHorizontal;
 
 @end

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16317360E6E24701B6FC3502 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0870BFB366004F1B98CDECEB /* libPods.a */; };
 		5D3A782818FF1912006CCAB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3A782718FF1912006CCAB3 /* Foundation.framework */; };
 		5D3A782A18FF1912006CCAB3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3A782918FF1912006CCAB3 /* CoreGraphics.framework */; };
 		5D3A782C18FF1912006CCAB3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3A782B18FF1912006CCAB3 /* UIKit.framework */; };
@@ -17,11 +16,10 @@
 		5D3A783E18FF1912006CCAB3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A783D18FF1912006CCAB3 /* ViewController.m */; };
 		5D3A784018FF1912006CCAB3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D3A783F18FF1912006CCAB3 /* Images.xcassets */; };
 		5D3A785E18FF1923006CCAB3 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3A785D18FF1923006CCAB3 /* CustomScrollView.m */; };
-		F981C00E1914449600EF08E0 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F981C00D1914449600EF08E0 /* Podfile */; };
+		79C77C7D24FC33A5006C73DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79C77C7C24FC33A5006C73DE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0870BFB366004F1B98CDECEB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3A782418FF1912006CCAB3 /* CustomScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3A782718FF1912006CCAB3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5D3A782918FF1912006CCAB3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -38,8 +36,7 @@
 		5D3A784618FF1912006CCAB3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5D3A785C18FF1923006CCAB3 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
 		5D3A785D18FF1923006CCAB3 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
-		B46FF41BCE7149C494BAF198 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		F981C00D1914449600EF08E0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		79C77C7C24FC33A5006C73DE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +47,6 @@
 				5D3A782A18FF1912006CCAB3 /* CoreGraphics.framework in Frameworks */,
 				5D3A782C18FF1912006CCAB3 /* UIKit.framework in Frameworks */,
 				5D3A782818FF1912006CCAB3 /* Foundation.framework in Frameworks */,
-				16317360E6E24701B6FC3502 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,11 +56,9 @@
 		5D3A781B18FF1912006CCAB3 = {
 			isa = PBXGroup;
 			children = (
-				F981C00D1914449600EF08E0 /* Podfile */,
 				5D3A782D18FF1912006CCAB3 /* CustomScrollView */,
 				5D3A782618FF1912006CCAB3 /* Frameworks */,
 				5D3A782518FF1912006CCAB3 /* Products */,
-				B46FF41BCE7149C494BAF198 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,7 +77,6 @@
 				5D3A782918FF1912006CCAB3 /* CoreGraphics.framework */,
 				5D3A782B18FF1912006CCAB3 /* UIKit.framework */,
 				5D3A784618FF1912006CCAB3 /* XCTest.framework */,
-				0870BFB366004F1B98CDECEB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,6 +90,7 @@
 				5D3A783D18FF1912006CCAB3 /* ViewController.m */,
 				5D3A785C18FF1923006CCAB3 /* CustomScrollView.h */,
 				5D3A785D18FF1923006CCAB3 /* CustomScrollView.m */,
+				79C77C7C24FC33A5006C73DE /* LaunchScreen.storyboard */,
 				5D3A783F18FF1912006CCAB3 /* Images.xcassets */,
 				5D3A782E18FF1912006CCAB3 /* Supporting Files */,
 			);
@@ -121,11 +115,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D3A785618FF1912006CCAB3 /* Build configuration list for PBXNativeTarget "CustomScrollView" */;
 			buildPhases = (
-				62DE0F503E3A4995A36430F6 /* Check Pods Manifest.lock */,
 				5D3A782018FF1912006CCAB3 /* Sources */,
 				5D3A782118FF1912006CCAB3 /* Frameworks */,
 				5D3A782218FF1912006CCAB3 /* Resources */,
-				57E6CA112A6F42E983D801CF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,6 +142,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -168,46 +161,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F981C00E1914449600EF08E0 /* Podfile in Resources */,
+				79C77C7D24FC33A5006C73DE /* LaunchScreen.storyboard in Resources */,
 				5D3A784018FF1912006CCAB3 /* Images.xcassets in Resources */,
 				5D3A783218FF1912006CCAB3 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		57E6CA112A6F42E983D801CF /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		62DE0F503E3A4995A36430F6 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5D3A782018FF1912006CCAB3 /* Sources */ = {
@@ -307,13 +267,13 @@
 		};
 		5D3A785718FF1912006CCAB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B46FF41BCE7149C494BAF198 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CustomScrollView/CustomScrollView-Prefix.pch";
 				INFOPLIST_FILE = "CustomScrollView/CustomScrollView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wl.demo.CustomScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -321,13 +281,13 @@
 		};
 		5D3A785818FF1912006CCAB3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B46FF41BCE7149C494BAF198 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CustomScrollView/CustomScrollView-Prefix.pch";
 				INFOPLIST_FILE = "CustomScrollView/CustomScrollView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wl.demo.CustomScrollView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
