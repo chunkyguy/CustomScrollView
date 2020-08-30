@@ -44,20 +44,20 @@ CGFloat clamp(CGFloat value, CGFloat min, CGFloat max)
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panGestureRecognizer
 {
   switch (panGestureRecognizer.state) {
-    case UIGestureRecognizerStateBegan:
-      _startBounds = self.bounds;
-      break;
+  case UIGestureRecognizerStateBegan:
+    _startBounds = self.bounds;
+    break;
 
-    case UIGestureRecognizerStateChanged:
-      [self updateBoundsWithTranslation:[panGestureRecognizer translationInView:self]];
-      break;
+  case UIGestureRecognizerStateChanged:
+    [self updateBoundsWithTranslation:[panGestureRecognizer translationInView:self]];
+    break;
 
-    case UIGestureRecognizerStateEnded:
-      [self printInfo];
-      break;
+  case UIGestureRecognizerStateEnded:
+    [self printInfo];
+    break;
 
-    default:
-      break;
+  default:
+    break;
   }
 }
 
@@ -65,10 +65,10 @@ CGFloat clamp(CGFloat value, CGFloat min, CGFloat max)
 {
   CGRect bounds = _startBounds;
   CGPoint delta = CGPointMake(bounds.origin.x - translation.x,
-                              bounds.origin.y - translation.y);
+    bounds.origin.y - translation.y);
   CGPoint min = CGPointZero;
   CGPoint max = CGPointMake(_contentSize.width - bounds.size.width,
-                            _contentSize.height - bounds.size.height);
+    _contentSize.height - bounds.size.height);
   bounds.origin.x = clamp(delta.x, min.x, max.x);
   bounds.origin.y = clamp(delta.y, min.y, max.y);
   self.bounds = bounds;
